@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { BOOK_TITLE_MAX, BOOK_DESC_MAX } from "@/lib/constants";
@@ -22,7 +22,8 @@ export async function createBook(formData: FormData) {
 
   if (!title) return;
 
-  const { data: user } = await (await import("@clerk/nextjs/server")).currentUser();
+  const user = await currentUser();
+
   const authorName = user?.firstName && user?.lastName
     ? `${user.firstName} ${user.lastName}`
     : user?.firstName ?? user?.username ?? null;
