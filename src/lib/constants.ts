@@ -20,6 +20,8 @@ export const COVER_PRESETS = [
 ] as const;
 
 export const GENRES = [
-  "Fantasy", "Romance", "Mystery", "Sci-Fi", "Thriller", "Literary",
-  "Horror", "Young Adult", "Historical", "Comedy", "Other",
+  "Fiction", "Non-Fiction", "Biography", "Self-Help", "Business", "Science",
+  "History", "Technology", "Art & Design", "Travel", "Cooking", "Health & Fitness",
+  "Education", "Religion & Spirituality", "Children's Books", "Comics & Graphic Novels",
+  "Poetry", "Drama", "Fantasy", "Romance", "Mystery", "Sci-Fi", "Thriller", "Horror", "Other",
 ] as const;
