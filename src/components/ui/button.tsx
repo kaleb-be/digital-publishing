@@ -5,18 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-background",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors" +
+  " focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-background hover:cursor-pointer",
   {
     variants: {
       variant: {
         default:
-          "bg-zinc-900 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200",
+          "bg-orange-600 text-white hover:bg-orange-200 hover:text-orange-600",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background hover:bg-orange-200 hover:text-orange-600 ",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground text-zinc-700 dark:text-zinc-200",
+          "hover:bg-accent hover:text-accent-foreground text-orange-700 dark:text-orange-400",
         secondary:
-          "bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-700",
+          "bg-orange-100 text-orange-900 hover:bg-orange-200 dark:bg-orange-800 dark:text-orange-50 dark:hover:bg-orange-700",
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -2,13 +2,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1c1c1c;
   --card: #ffffff;
   --card-foreground: #171717;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --input: #e4e4e7;
-  --ring: #18181b;
+  --muted: #fef3c7;
+  --muted-foreground: #92400e;
+  --input: #fed7aa;
+  --ring: #ea580c;
 }
 
 @theme inline {
@@ -24,10 +24,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--background);
+    --foreground: var(--foreground);
   }
 }
 
