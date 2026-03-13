@@ -44,12 +44,12 @@ async function AuthorDashboard() {
 
       <section className="space-y-3">
         <Button asChild>
-          <Link href="/a/books/new">Create new book</Link>
+          <Link href="/a/books/new">Write a new book</Link>
         </Button>
         {books.length === 0 ? (
           <p className="text-sm text-zinc-500">You have not created any books yet.</p>
         ) : (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-3">
             {books.map(({id, title, description, cover_url, approval_status}) => (
               <BookCard key={id} id={id} title={title} description={description} cover_url={cover_url} approval_status={approval_status}/>
             ))}
