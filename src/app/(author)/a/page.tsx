@@ -16,10 +16,11 @@ async function AuthorDashboard() {
     getUserCredits(userId),
     supabase
       .from("books")
-      .select("id, title, description, cover_url, approval_status")
+      .select("id, title, description,author_name, cover_url, genre, tags, approval_status")
       .eq("author_clerk_id", userId)
       .order("created_at", { ascending: false }),
   ]);
+
 
   const books: BookListItem[] = booksResult.data ?? [];
 

@@ -19,9 +19,12 @@ export type Book = {
 
 export type BookListItem = {
   id: string;
-  title: string;
-  description: string | null;
-  cover_url: string | null;
+  title: any;
+  description: any;
+  author_name: any;
+  cover_url: any;
+  genre: any;
+  tags: any;
   approval_status: ApprovalStatus;
 };
 

@@ -1,8 +1,7 @@
 import {Card, CardContent} from "@/components/ui/card";
-import {BookListItem} from "@/lib/types";
 import Link from "next/link";
 
-const BookCard = ({id, title, description, cover_url, approval_status}: BookListItem) => {
+const BookCard = ({id, title, description, cover_url, approval_status}: {id: string; title: string; description: string; cover_url: string; approval_status: string}) => {
   return (
     <Card key={id} className="overflow-hidden">
       <Link href={`/a/books/${id}`}>
