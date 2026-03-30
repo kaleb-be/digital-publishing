@@ -3,29 +3,17 @@
 // todo: enforce confirmation on removal of chopters
 // todo: enforce confirmation on removal of books
 
-import { useState } from "react";
-import {
-  updateBook,
-  addChapter,
-  deleteChapter,
-  updateChapter,
-} from "./actions";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { EditPencil } from "@/components/ui/edit-pencil";
-import { TiptapEditor } from "@/components/editor/TiptapEditor";
-import {
-  BOOK_TITLE_MAX,
-  BOOK_DESC_MAX,
-  CHAPTER_TITLE_MAX,
-  CHAPTER_PREFIX_OPTIONS,
-  COVER_PRESETS,
-  GENRES,
-} from "@/lib/constants";
-import { Checkbox } from "@/components/ui/checkbox";
+import {useState} from "react";
+import {addChapter, deleteChapter, updateBook, updateChapter,} from "./actions";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {Textarea} from "@/components/ui/textarea";
+import {Label} from "@/components/ui/label";
+import {EditPencil} from "@/components/ui/edit-pencil";
+import {BOOK_DESC_MAX, BOOK_TITLE_MAX, CHAPTER_TITLE_MAX, COVER_PRESETS,} from "@/lib/constants";
+import {Checkbox} from "@/components/ui/checkbox";
+import TinyEditor from "@/components/editor/TinyEditor";
 
 type Book = {
   id: string;
@@ -48,9 +36,9 @@ type Chapter = {
 };
 
 export function BookEditView({
-  book,
-  chapters: initialChapters,
-}: {
+                               book,
+                               chapters: initialChapters,
+                             }: {
   book: Book;
   chapters: Chapter[];
 }) {
@@ -87,7 +75,7 @@ export function BookEditView({
           {editingCover && (
             <form
               action={async (fd) => {
-                await updateBook(book.id, { cover_url: fd.get("cover_url") as string });
+                await updateBook(book.id, {cover_url: fd.get("cover_url") as string});
                 setEditingCover(false);
                 window.location.reload();
               }}
@@ -102,7 +90,7 @@ export function BookEditView({
                     value={p.url}
                     className="overflow-hidden rounded border"
                   >
-                    <img src={p.url} alt="" className="h-16 w-12 object-cover" />
+                    <img src={p.url} alt="" className="h-16 w-12 object-cover"/>
                   </button>
                 ))}
               </div>
@@ -158,7 +146,7 @@ export function BookEditView({
           ) : (
             <div className="flex items-center gap-2">
               <h1 className="text-2xl font-semibold">{book.title}</h1>
-              <EditPencil onClick={() => setEditingTitle(true)} />
+              <EditPencil onClick={() => setEditingTitle(true)}/>
             </div>
           )}
           {editingDesc ? (
@@ -197,7 +185,7 @@ export function BookEditView({
               <p className="text-sm text-zinc-600 italic">
                 {book.description || "No description"}
               </p>
-              <EditPencil onClick={() => setEditingDesc(true)} />
+              <EditPencil onClick={() => setEditingDesc(true)}/>
             </div>
           )}
           <p className="text-xs text-zinc-500">
@@ -223,7 +211,7 @@ export function BookEditView({
                     {editingChapterId !== ch.id && (
                       <>
                         <span className="font-medium">{ch.title}</span>
-                        <EditPencil onClick={() => setEditingChapterId(ch.id)} />
+                        <EditPencil onClick={() => setEditingChapterId(ch.id)}/>
                       </>
                     )}
                   </div>
@@ -290,11 +278,11 @@ export function BookEditView({
 }
 
 function ChapterEditForm({
-  chapter,
-  bookId,
-  onDone,
-  onCancel,
-}: {
+                           chapter,
+                           bookId,
+                           onDone,
+                           onCancel,
+                         }: {
   chapter: Chapter;
   bookId: string;
   onDone: () => void;
@@ -319,10 +307,10 @@ function ChapterEditForm({
         maxLength={CHAPTER_TITLE_MAX}
         placeholder="Chapter title"
       />
-      <TiptapEditor
+      <TinyEditor
         name="content"
         defaultValue={chapter.content_md ?? ""}
-        onChange={setContent}
+        onChangeAction={setContent}
       />
       <div className="flex gap-2">
         <Button type="submit" size="sm">
@@ -337,11 +325,11 @@ function ChapterEditForm({
 }
 
 function AddChapterForm({
-  bookId,
-  nextOrder,
-  onDone,
-  onCancel,
-}: {
+                          bookId,
+                          nextOrder,
+                          onDone,
+                          onCancel,
+                        }: {
   bookId: string;
   nextOrder: number;
   onDone: () => void;
@@ -365,15 +353,15 @@ function AddChapterForm({
     >
       <div className="space-y-2">
         <Label>Chapter title (max {CHAPTER_TITLE_MAX})</Label>
-        <Input name="title" maxLength={CHAPTER_TITLE_MAX} placeholder="Chapter title" required />
+        <Input name="title" maxLength={CHAPTER_TITLE_MAX} placeholder="Chapter title" required/>
       </div>
       <div className="space-y-2">
         <Label>Content</Label>
-        <TiptapEditor name="content" onChange={setContent} />
+        <TinyEditor name="content" onChangeAction={setContent}/>
       </div>
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <Checkbox id="isPremium" name="isPremium" />
+          <Checkbox id="isPremium" name="isPremium"/>
           <Label htmlFor="isPremium" className="font-normal">
             Premium
           </Label>
