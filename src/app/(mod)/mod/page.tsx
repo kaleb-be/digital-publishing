@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { isModerator } from "@/lib/moderation";
 import { ModBookList } from "./ModBookList";
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 
 export default async function ModDashboard() {
