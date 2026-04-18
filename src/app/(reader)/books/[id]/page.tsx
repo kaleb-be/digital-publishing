@@ -55,7 +55,7 @@ export default async function BookPage({ params }: BookPageProps) {
           )}
           {book.tags && book.tags.length > 0 && (
             <div className="flex flex-wrap gap-1">
-              {book.tags.map((t) => (
+              {book.tags.map((t:string) => (
                 <span
                   key={t}
                   className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs "
